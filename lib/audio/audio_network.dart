@@ -17,38 +17,38 @@ class _AudioNetworkState extends State<AudioNetwork> {
   String timeLeft = "";
   double progress = 0.0;
 
-  startPlaying() async{
-    if(!isStarted) {
+  startPlaying() async {
+    if (!isStarted) {
       await audioPlayer.play(
-        "https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_2MG.mp3");
+          "https://file-examples.com/wp-content/uploads/2017/11/file_example_MP3_2MG.mp3");
       isStarted = true;
-    }
-    else await audioPlayer.resume();
+    } else
+      await audioPlayer.resume();
     // time  = await audioPlayer.getDuration();
   }
 
   getTimeLeft() {
-    if(duration == null) {
+    if (duration == null) {
       setState(() {
-       timeLeft = "Time Left 0s"; 
+        timeLeft = "Time Left 0s";
       });
     } else {
       setState(() {
-       timeLeft = "Time Left ${duration.inSeconds}s"; 
+        timeLeft = "Time Left ${duration.inSeconds}s";
       });
     }
   }
-  getProgress()  {
-    if(time == null || duration == null) {
+
+  getProgress() {
+    if (time == null || duration == null) {
       setState(() {
-       progress = 0.0; 
+        progress = 0.0;
       });
     } else {
       setState(() {
         progress = time / (duration.inMilliseconds);
       });
     }
-    
   }
 
   @override
@@ -57,21 +57,19 @@ class _AudioNetworkState extends State<AudioNetwork> {
     audioPlayer.onAudioPositionChanged.listen((Duration p) async {
       print('Current position: $p');
       time = await audioPlayer.getDuration();
-        duration = p;
-      if(duration == null) {
-       timeLeft = "Time Left 0s/0s"; 
-    } else {
-       timeLeft = "Time Left ${duration.inSeconds}s/${time/1000}s"; 
-    }
-    if(time == null || duration == null) {
-       progress = 0.0; 
-    } else {
-        progress = (duration.inMilliseconds)/ time ;
-    }
-    print(progress);
-    setState(() {
-      
-    });
+      duration = p;
+      if (duration == null) {
+        timeLeft = "Time Left 0s/0s";
+      } else {
+        timeLeft = "Time Left ${duration.inSeconds}s/${time / 1000}s";
+      }
+      if (time == null || duration == null) {
+        progress = 0.0;
+      } else {
+        progress = (duration.inMilliseconds) / time;
+      }
+      print(progress);
+      setState(() {});
     });
     audioPlayer.onPlayerStateChanged.listen((AudioPlayerState state) {
       print("$state");
@@ -80,7 +78,7 @@ class _AudioNetworkState extends State<AudioNetwork> {
           isPlaying = true;
         });
       } else {
-        if(mounted) {
+        if (mounted) {
           setState(() {
             isPlaying = false;
           });
