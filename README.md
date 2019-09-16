@@ -1,4 +1,4 @@
-# Flutter Media PlayBack
+## Flutter Media PlayBack
 
 Hello All Flutter Devs 
 
@@ -8,16 +8,17 @@ Here we are going to see how to play a `Video` and `Audio` file from Internet, A
 
 In this demo i am going to use three plugins they are
 
-```
+```dart
 video_player
 audioplayers
 file_picker
 ```
+
 So using this above three plugins we are going to build a demo project for MediaPlayBack
 
 Let's Get Started,
 
-# Dependencies
+## Dependencies
 
 Add the following dependencies in `pubspec.yaml`
 
@@ -29,11 +30,11 @@ audioplayers: ^0.13.2
 
 First we see how to play videos then we go for Audios
 
-# Video
+## Video
 
 Here how to goahead with video
 
-# Permission
+## Permission
 
 Warning: The video player is not functional on iOS simulators. An iOS device must be used during development/testing.
 
@@ -61,13 +62,13 @@ Ensure the following permission is present in your Android Manifest file, locate
 <uses-permission android:name="android.permission.INTERNET"/>
 ```
 
-# Supported Formats
+## Supported Formats
 
 On iOS, the backing player is AVPlayer. The supported formats vary depending on the version of iOS, AVURLAsset class has audiovisualTypes that you can query for supported av formats.
 On Android, the backing player is ExoPlayer, please refer here for list of supported formats.
 
 
-# Video From Internet
+## Video From Internet
 
 Declare a Variable in your code which a `VideoPlayerController`, this one we are going to use it with `VideoPlayer`
 
@@ -208,7 +209,7 @@ class _VideoNetworkState extends State<VideoNetwork> {
 }
 ```
 
-# Video From Assets
+## Video From Assets
 
 The only major changes between playing a Video from internt and Assets is the `VideoPlayerController` part
 
@@ -219,7 +220,7 @@ VideoPlayerController _videoPlayerController = VideoPlayerController.asset(
 
 For playing video from assets instead of `VideoPlayerController.network` we use `VideoPlayerController.asset` and remaining all works as above
 
-# Video From File
+## Video From File
 
 The only major changes between playing a Video from internt and Local is the `VideoPlayerController` part
 
@@ -231,7 +232,7 @@ For playing video from Local instead of `VideoPlayerController.network` we use `
 
 So Inorder to get the file we will use `file_picker` plugin
 
-# Pick a Video File
+## Pick a Video File
 
 ```dart
 _pickVideoFileFrom(context) async {
@@ -264,11 +265,11 @@ void dispose() {
 }
 ```
 
-# Audio
+## Audio
 
 Lets get started with Audio
 
-# AudioPlayer for Remote Files
+## AudioPlayer for Remote Files
 
 Intialize Audio Player
 
@@ -467,7 +468,7 @@ class _AudioNetworkState extends State<AudioNetwork> {
 }
 ```
 
-# AudioPlayer for Local Files
+## AudioPlayer for Local Files
 
 The major change from playing remote files and local files is only about how we start playing, at the time we call `play` we need to pass another paramer called `isLoacal` to play a local file
 
@@ -505,7 +506,7 @@ void dispose() async {
 ```
 I will provide github link at the bottom
 
-# AudioPlayer for Assets
+## AudioPlayer for Assets
 
 Playing an Audio File from assets is different from others mode
 
